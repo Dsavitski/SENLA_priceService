@@ -7,19 +7,18 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.UUID;
 
 @Entity
-@Table(name = "price_snaphots")
+@Table(name = "price_snapshots")
 @Getter
 @Setter
 @NoArgsConstructor
 public class PriceSnapshot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, length = 20)
     private String symbol;
 
     @Column(nullable = false, precision = 20, scale = 8)

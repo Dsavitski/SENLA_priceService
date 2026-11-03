@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-price-record
+      author: Savitskiy Denis 
+      changes:
+        - createTable:
+            tableName: price_snapshots
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: symbol
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: NUMERIC(20,8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: binance_close_time
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fetched_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            tableName: price_snapshots
+            columnNames: symbol, binance_close_time
+            constraintName: uq_price_symbol_close_time
+        - createIndex:
+            tableName: price_snapshots
+            indexName: idx_price_symbol_fetched_at
+            columns:
+              - column:
+                  name: symbol
+              - column:
+                  name: fetched_at
