@@ -51,8 +51,7 @@ public class PriceService {
         return repository.findTopBySymbolOrderByFetchedAtDesc(symbol)
                 .map(mapper::toResponseDto)
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "No price data found for symbol: " + symbol
-                ));
+                        "No price data found for symbol: " + symbol));
     }
 
     public AveragePriceResponseDto getAveragePrice(String symbol, Instant from, Instant to) {
@@ -65,7 +64,6 @@ public class PriceService {
         if (average == null) {
             throw new ResourceNotFoundException("No price data found for the specified period");
         }
-
         return new AveragePriceResponseDto(average);
     }
 
@@ -103,7 +101,6 @@ public class PriceService {
         } else {
             trend = Trend.FLAT;
         }
-
         return new TrendResponseDto(symbol, from, to, trend);
     }
 }

@@ -7,5 +7,6 @@ public record PaginatedPriceResponseDto(
         int page,
         int size,
         long totalElements,
-        boolean hasNext
-) {}
+        boolean hasNext) {
+
+}

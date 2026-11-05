@@ -6,6 +6,5 @@ import java.time.Instant;
 public record PriceToUserResponseDto(
         String symbol,
         BigDecimal price,
-        Instant fetchedAt
-) {
+        Instant fetchedAt) {
 }

@@ -28,8 +28,7 @@ public class BinanceClient {
                     .onStatus(status -> status.is4xxClientError(), (req, resp) -> {
                         String errorMsg = String.format(
                                 "Client error requesting %s: %s",
-                                symbol, resp.getStatusCode()
-                        );
+                                symbol, resp.getStatusCode());
                         log.error(errorMsg);
                         throw new BinanceApiException(errorMsg);
                     })

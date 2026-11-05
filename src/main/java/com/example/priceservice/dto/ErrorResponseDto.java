@@ -8,8 +8,7 @@ public record ErrorResponseDto(
     Instant timestamp,
     int status,
     String error,
-    String message
-) {
+    String message) {
     public static ErrorResponseDto createErrorResponse(HttpStatus status, String message){
         return new ErrorResponseDto(
                 Instant.now(),

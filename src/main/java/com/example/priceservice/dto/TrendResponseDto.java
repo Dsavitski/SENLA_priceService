@@ -8,6 +8,5 @@ public record TrendResponseDto(
         String symbol,
         Instant startDate,
         Instant endDate,
-        Trend trend
-) {
+        Trend trend) {
 }
