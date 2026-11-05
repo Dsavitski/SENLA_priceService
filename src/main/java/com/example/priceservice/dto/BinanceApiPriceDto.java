@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 public record BinanceApiPriceDto(
         String symbol,
         BigDecimal price,
-        @JsonProperty("mins") Integer minutes) {
+        @JsonProperty("mins") Integer minutes,
+        @JsonProperty("closeTime") Long closeTime) {
 
 }
