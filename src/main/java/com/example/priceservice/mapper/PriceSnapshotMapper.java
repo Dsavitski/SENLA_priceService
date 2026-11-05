@@ -18,5 +18,6 @@ public interface PriceSnapshotMapper {
 
     @Mapping(source = "content", target = "items")
     @Mapping(source = "number", target = "page")
+    @Mapping(target = "hasNext", expression = "java(page.hasNext())")
     PaginatedPriceResponseDto toPaginatedResponseDto(Page<PriceSnapshot> page);
 }

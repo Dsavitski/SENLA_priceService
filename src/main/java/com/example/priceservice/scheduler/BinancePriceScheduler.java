@@ -27,7 +27,7 @@ public class BinancePriceScheduler {
         try {
             BinanceApiPriceDto priceData = binanceClient.getAvgPrice(defaultSymbol);
 
-            // Передаем символ явно
+
             priceService.savePrice(defaultSymbol, priceData);
 
             log.info("Successfully fetched and saved price for {}", defaultSymbol);

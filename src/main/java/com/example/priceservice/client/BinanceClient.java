@@ -36,8 +36,7 @@ public class BinanceClient {
                     .onStatus(status -> status.is5xxServerError(), (req, resp) -> {
                         String errorMsg = String.format(
                                 "Binance server error requesting %s: %s",
-                                symbol, resp.getStatusCode()
-                        );
+                                symbol, resp.getStatusCode());
                         log.error(errorMsg);
                         throw new BinanceApiException(errorMsg);
                     })
