@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-index-symbol-fetchedAt
+      author: Denis Savitskiy
+      changes:
+        - preConditions:
+            - onFail: MARK_RAN
+            - not:
+                indexExists:
+                  indexName: idx_price_symbol_fetched_at
+                  tableName: price_snapshots
+        - createIndex:
+            indexName: idx_price_symbol_fetched_at
+            tableName: price_snapshots
+            columns:
+              - column:
+                  name: symbol
+              - column:
+                  name: fetched_at
